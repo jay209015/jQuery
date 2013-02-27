@@ -30,35 +30,35 @@ class jQuery {
 		return $this;
 	}
     
-	/**
-	* Simple GET request to target page
-	*
-	* @param string $url Target page to request
-	* @return jQuery
-	*/
-	public function get($url){
-			return $this->load($url);
-	}
-	
-	/**
-	 * Simple POST request to target page
-	 *
-	 * @param string $url Target page to request
-	 * @param string $params Query string for post vars
-	 * @return jQuery
-	 */
-	public function post($url, $params){
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch, CURLOPT_POST, 1);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
-			$results = curl_exec($ch);
-			curl_close($ch);
-			
-			return $this->load($results);
-	}
+    /**
+    * Simple GET request to target page
+    *
+    * @param string $url Target page to request
+    * @return jQuery
+    */
+    public function get($url){
+        return $this->load($url);
+    }
+    
+    /**
+     * Simple POST request to target page
+     *
+     * @param string $url Target page to request
+     * @param string $params Query string for post vars
+     * @return jQuery
+     */
+    public function post($url, $params){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+        $results = curl_exec($ch);
+        curl_close($ch);
+        
+        return $this->load($results);
+    }
 	
 	public function load($source){
 		$this->document = new DOMDocument();		
